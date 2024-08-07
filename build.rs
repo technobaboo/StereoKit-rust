@@ -33,6 +33,9 @@ fn main() {
             // When you need to ship your own openxr loader use this feature:
             cmake_config.define("SK_DYNAMIC_OPENXR", "ON");
         }
+    } else if target_family == "unix" {
+        cmake_config.define("CPM_USE_LOCAL_PACKAGES", "ON");
+        cmake_config.define("SK_BUILD_OPENXR_LOADER", "OFF");
     }
 
     let dst = cmake_config.build();
